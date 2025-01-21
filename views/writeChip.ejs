@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="event.preventDefault(); writeChip(
+    document.getElementById('username').value,
+)">
+    <input type="text" id="username" placeholder="Benutzername" required>
+    <button type="submit">Chip beschreiben</button>
+</form>
+<script src="/assets/js/writeChip.js"></script>
+</body>
+</html>

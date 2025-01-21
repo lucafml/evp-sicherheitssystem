@@ -1,0 +1,38 @@
+:root {
+    --bs-body-bg: #1a1d21;
+    --bs-body-color: #e9ecef;
+}
+
+body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+.table {
+    --bs-table-bg: #242729;
+    --bs-table-striped-bg: #2a2e32;
+    --bs-table-striped-color: #e9ecef;
+    --bs-table-border-color: #373b3e;
+}
+
+.form-control {
+    background-color: #2a2e32;
+    border-color: #373b3e;
+    color: #e9ecef;
+}
+
+.form-control:focus {
+    background-color: #2a2e32;
+    border-color: #0d6efd;
+    color: #e9ecef;
+}
+
+.page-link {
+    background-color: #242729;
+    border-color: #373b3e;
+}
+
+.page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
