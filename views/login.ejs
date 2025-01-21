@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div
+        class="row justify-content-center"
+        style="height: 100vh; align-items: center"
+      >
+        <div class="col-md-4">
+          <h2 class="text-center mb-4">Login</h2>
+          <form action="/login" method="POST" id="loginForm">
+            <div class="form-group">
+              <label for="username">Benutzername</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                placeholder="Benutzername"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Passwort</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Passwort"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Login
+            </button>
+          </form>
+          <div id="loginFeedback" style="display: none; color: red"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS und Abhängigkeiten -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/assets/js/login_AJAX.js"></script>
+  </body>
+</html>
