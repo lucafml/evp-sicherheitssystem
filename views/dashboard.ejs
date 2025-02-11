@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,7 +17,115 @@
       <header>
         <%- include('includes/header') %>
       </header>
-      <main></main>
+      <main>
+        <div class="row">
+          <!-- State Changes -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Letzte Statusänderungen</h5>
+              </div>
+              <div class="card-body">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th>Benutzer</th>
+                      <th>Status</th>
+                      <th>Zeit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% stateChanges.forEach(function(entry) { %>
+                      <tr>
+                        <td><%= entry.username %></td>
+                        <td><span class="<%= entry.event_type === 'aktiviert' ? 'text-success' : 'text-danger' %>">
+                          <%= entry.event_type %>
+                        </span></td>
+                        <td><%= new Date(entry.timestamp).toLocaleString('de-DE', { 
+                          hour: '2-digit', 
+                          minute: '2-digit',
+                          day: '2-digit',
+                          month: '2-digit',
+                          year: 'numeric'
+                        }) %></td>
+                      </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+                <a href="/dashboard/state-changes" class="btn btn-primary btn-sm w-100">Alle anzeigen</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bewegungssensor -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Letzte Bewegungen</h5>
+              </div>
+              <div class="card-body">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Zeit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% bewegungen.forEach(function(entry) { %>
+                      <tr>
+                        <td><span class="text-warning"><%= entry.status %></span></td>
+                        <td><%= new Date(entry.timestamp).toLocaleString('de-DE', { 
+                          hour: '2-digit', 
+                          minute: '2-digit',
+                          day: '2-digit',
+                          month: '2-digit',
+                          year: 'numeric'
+                        }) %></td>
+                      </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+                <a href="/dashboard/bewegungssensor" class="btn btn-primary btn-sm w-100">Alle anzeigen</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lichtschranke -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Letzte Lichtschranken-Events</h5>
+              </div>
+              <div class="card-body">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Zeit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% lichtschranke.forEach(function(entry) { %>
+                      <tr>
+                        <td><span class="text-warning"><%= entry.status %></span></td>
+                        <td><%= new Date(entry.timestamp).toLocaleString('de-DE', { 
+                          hour: '2-digit', 
+                          minute: '2-digit',
+                          day: '2-digit',
+                          month: '2-digit',
+                          year: 'numeric'
+                        }) %></td>
+                      </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+                <a href="/dashboard/lichtschranke" class="btn btn-primary btn-sm w-100">Alle anzeigen</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
 
     <script

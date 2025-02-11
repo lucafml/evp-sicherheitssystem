@@ -1,22 +1,28 @@
-<div class="row">
-    <div class="col-12">
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
-        <h1 class="h2 mb-3 mb-md-0">Dashboard</h1>
-        <div class="d-flex gap-3">
-          <% if (page === 'state-changes') { %>
-            <a href="/dashboard" class="btn btn-primary">Zum Dashboard</a>
-          <% } else { %>
-            <a href="/dashboard/state-changes" class="btn btn-primary">State Change History</a>
-          <% } %>
-          <% if (page === 'create-user') { %>
-            <a href="/dashboard" class="btn btn-primary">Zum Dashboard</a>
-          <% } else { %>
-            <a href="/create-user" class="btn btn-primary">Benutzer erstellen</a>
-          <% } %>
-          <form action="/logout" method="post" class="m-0">
-            <button class="btn btn-outline-danger" type="submit">Logout</button>
-          </form>
-        </div>
-      </div>
-    </div>
+<div class="d-flex align-items-center gap-3 mb-3">
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Navigation
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark">
+      <li><a class="dropdown-item" href="/dashboard">Zum Dashboard</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="/dashboard/state-changes">Statusänderungen Log</a></li>
+      <li><a class="dropdown-item" href="/dashboard/lichtschranke">Lichtschranke Log</a></li>
+      <li><a class="dropdown-item" href="/dashboard/bewegungssensor">Bewegungssensor Log</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="/create-user">Benutzer erstellen</a></li>
+    </ul>
+  </div>
+  <div class="system-status">
+    <span class="badge fs-6 <%= sys_state ? 'text-bg-success' : 'text-bg-danger' %>">
+      System ist <%= sys_state ? 'aktiviert' : 'deaktiviert' %>
+    </span>
+  </div>
+  <div class="ms-auto">
+    <form action="/logout" method="POST" class="d-inline">
+      <button type="submit" class="btn btn-danger">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </button>
+    </form>
+  </div>
 </div>
