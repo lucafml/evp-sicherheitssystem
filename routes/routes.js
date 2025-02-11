@@ -47,6 +47,22 @@ router.post("/logout", (req, res) => {
   res.redirect("/login");
 })
 
+router.get("/create-user", checkLogin, (req, res) => {
+  res.render("create-user", { page: "create-user" });
+});
+
+router.post("/create-user", checkLogin, (req, res) => {
+  const { username, password } = req.body;
+  const query = "INSERT INTO users (username, password) VALUES (?, ?)";
+  pool.query(query, [username, password], function (err, result) {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Interner Serverfehler." });
+    }
+    return res.json({ success: true, message: "Benutzer erfolgreich erstellt." });
+  });
+});
+
 router.get("/dashboard/state-changes", checkLogin, async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -98,7 +114,8 @@ router.get("/dashboard/state-changes", checkLogin, async (req, res) => {
       currentPage: page,
       totalPages: totalPages,
       limit: limit,
-      query: req.query
+      query: req.query,
+      page: "state-changes"
     });
   } catch(err) {
     console.error(err);
@@ -107,7 +124,7 @@ router.get("/dashboard/state-changes", checkLogin, async (req, res) => {
 });
 
 router.get("/dashboard", checkLogin, (req, res) => {
-  res.render("dashboard");
+  res.render("dashboard", { page: "dashboard" });
 });
 
 module.exports = router;

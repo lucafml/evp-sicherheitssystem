@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-12">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+        <h1 class="h2 mb-3 mb-md-0">Dashboard</h1>
+        <div class="d-flex gap-3">
+          <% if (page === 'state-changes') { %>
+            <a href="/dashboard" class="btn btn-primary">Zum Dashboard</a>
+          <% } else { %>
+            <a href="/dashboard/state-changes" class="btn btn-primary">State Change History</a>
+          <% } %>
+          <% if (page === 'create-user') { %>
+            <a href="/dashboard" class="btn btn-primary">Zum Dashboard</a>
+          <% } else { %>
+            <a href="/create-user" class="btn btn-primary">Benutzer erstellen</a>
+          <% } %>
+          <form action="/logout" method="post" class="m-0">
+            <button class="btn btn-outline-danger" type="submit">Logout</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
